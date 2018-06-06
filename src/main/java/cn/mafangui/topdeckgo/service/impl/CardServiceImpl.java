@@ -27,7 +27,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Card getRandomCard(int cardNum) {
+    public List<Card> getRandomCard(int cardNum) {
         return cardDao.selectCardByRandom(cardNum);
     }
 }

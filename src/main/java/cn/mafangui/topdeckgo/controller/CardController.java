@@ -29,7 +29,7 @@ public class CardController {
     }
 
     @RequestMapping(value = "/getRandomCard")
-    public Card getRandomCard(int cardNum){
+    public List<Card> getRandomCard(int cardNum){
         return cardService.getRandomCard(cardNum);
     }
 

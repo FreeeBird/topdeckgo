@@ -12,5 +12,5 @@ public interface CardService {
 
     Card getCardByCardName(String cardName);
 
-    Card getRandomCard(int cardNum);
+    List<Card> getRandomCard(int cardNum);
 }

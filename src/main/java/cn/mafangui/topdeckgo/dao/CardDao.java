@@ -28,5 +28,5 @@ public interface CardDao {
     List<Card> findAllCard();
 
     @Select("SELECT * FROM t_card  ORDER BY  RAND() LIMIT #{cardNum}")
-    Card selectCardByRandom(int cardNum);
+    List<Card> selectCardByRandom(int cardNum);
 }
