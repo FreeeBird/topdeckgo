@@ -21,6 +21,33 @@ public class Card {
     private String cardDescription;
     //图片地址
     private String cardImgUrl;
+    //稀有度num
+    private int cardRarityNum;
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "cardId=" + cardId +
+                ", cardName='" + cardName + '\'' +
+                ", cardEngName='" + cardEngName + '\'' +
+                ", cardClass='" + cardClass + '\'' +
+                ", cardRarity='" + cardRarity + '\'' +
+                ", cardSpellPower=" + cardSpellPower +
+                ", cardHealth=" + cardHealth +
+                ", cardAtk=" + cardAtk +
+                ", cardDescription='" + cardDescription + '\'' +
+                ", cardImgUrl='" + cardImgUrl + '\'' +
+                ", cardRarityNum=" + cardRarityNum +
+                '}';
+    }
+
+    public int getCardRarityNum() {
+        return cardRarityNum;
+    }
+
+    public void setCardRarityNum(int cardRarityNum) {
+        this.cardRarityNum = cardRarityNum;
+    }
 
     public String getCardDescription() {
         return cardDescription;
@@ -102,19 +129,4 @@ public class Card {
         this.cardAtk = cardAtk;
     }
 
-    @Override
-    public String toString() {
-        return "Card{" +
-                "cardId=" + cardId +
-                ", cardName='" + cardName + '\'' +
-                ", cardEngName='" + cardEngName + '\'' +
-                ", cardClass='" + cardClass + '\'' +
-                ", cardRarity='" + cardRarity + '\'' +
-                ", cardSpellPower=" + cardSpellPower +
-                ", cardHealth=" + cardHealth +
-                ", cardAtk=" + cardAtk +
-                ", cardDescription='" + cardDescription + '\'' +
-                ", cardImgUrl='" + cardImgUrl + '\'' +
-                '}';
-    }
 }

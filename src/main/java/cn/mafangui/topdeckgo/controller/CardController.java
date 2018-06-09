@@ -28,7 +28,7 @@ public class CardController {
         return cardService.getAllCard(pageNum,pageSize);
     }
 
-    @RequestMapping(value = "/getRandomCard")
+    @PostMapping(value = "/getRandomCard")
     public List<Card> getRandomCard(int cardNum){
         return cardService.getRandomCard(cardNum);
     }

@@ -16,6 +16,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = "/getAllUser")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
+    }
+
     /**
      * 查询用户名是否存在
      * @param userName

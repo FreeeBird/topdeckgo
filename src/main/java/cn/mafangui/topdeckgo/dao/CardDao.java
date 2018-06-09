@@ -12,7 +12,7 @@ public interface CardDao {
 
 
     @Insert("insert into t_card values(#{cardName},#{cardEngName},#{cardClass},#{cardRarity},#{cardType},#{cardSpellPower},#{cardHealth}" +
-            ",#{cardSkill},#{cardDescription},#{cardImgUrl})")
+            ",#{cardSkill},#{cardDescription},#{cardImgUrl},#{cardRarityNum})")
     int addCard(Card card);
 
 

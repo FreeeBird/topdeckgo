@@ -12,7 +12,7 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
                 .allowedOrigins("*")
                 .allowedOrigins("*")
                 //rest集中请求方式
-                .allowedMethods("GET", "POST","DELETE")
+                .allowedMethods("GET", "POST")
                 .allowCredentials(false).maxAge(3600);
     }
 }
