@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>模拟开包 | 神抽GO！</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/play.js"></script>
+  <style>
+    @media only screen and (min-width: 1200px) {
+      .blog-g-fixed {
+        max-width: 1300px;
+        margin-top: 50px;
+      }
+    }
+
+    @media only screen and (min-width: 641px) {
+      .blog-sidebar {
+        font-size: 1.4rem;
+      }
+    }
+
+    .blog-main {
+      padding: 20px 0;
+    }
+
+    .blog-title {
+      margin: 10px 0 20px 0;
+    }
+
+    .blog-meta {
+      font-size: 14px;
+      margin: 10px 0 20px 0;
+      color: #222;
+    }
+
+    .blog-meta a {
+      color: #27ae60;
+    }
+
+    .blog-pagination a {
+      font-size: 1.4rem;
+    }
+
+    .blog-team li {
+      padding: 4px;
+    }
+
+    .blog-team img {
+      margin-bottom: 0;
+    }
+
+    .blog-content img,
+    .blog-team img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .blog-footer {
+      padding: 10px 0;
+      text-align: center;
+    }
+    #notLogin a,#logined a{
+      color: #fff;
+    }
+    .open{
+      /* background-image: url(assets/img/open-pack-bg.jpg); */
+    }
+    .pack-jd{
+      width: 18%;
+      border-radius: 10%;
+    }
+    .pack-jd:hover{
+      box-shadow: 0 0 70px #fff;
+    }
+    .total{
+      text-align: center;
+    
+    }
+    .total td{
+      vertical-align: middle!important;
+      font-size: 1.5em;
+      font-weight: bolder;
+      
+    }
+    .packs img:hover {
+           transform: scale(1.2);
+           -webkit-transform: scale(1.2); /*Safari 和 Chrome*/
+           -moz-transform: scale(1.2); /*Firefox*/
+            -ms-transform: scale(1.2); /*IE9*/
+            -o-transform: scale(1.2); /*Opera*/
+         }
+    .cards img:hover {
+           transform: scale(1.5);
+           -webkit-transform: scale(1.5); /*Safari 和 Chrome*/
+           -moz-transform: scale(1.5); /*Firefox*/
+            -ms-transform: scale(1.5); /*IE9*/
+            -o-transform: scale(1.5); /*Opera*/
+         }
+  </style>
+</head>
+<body>
+  <header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+      <h1 class="am-topbar-brand">
+        <a href="#">神抽GO！</a>
+      </h1>
+  
+      <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+              data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+          class="am-icon-bars"></span></button>
+  
+      <div class="am-collapse am-topbar-collapse" id="collapse-head">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+          <li><a href="home.html">首页</a></li>
+          <li class="am-active"><a>模拟开卡</a></li>
+          <li><a href="#">开卡记录</a></li>
+          <li><a href="#">卡牌数据</a></li>
+        </ul>
+        <div id="logined">
+          <div class="am-topbar-right">
+            <a class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注销</a>
+          </div>
+    
+          <div class="am-topbar-right">
+            <a class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span><span class="username"></span></a>
+          </div>
+        </div>
+        <div id="notLogin">
+        <div class="am-topbar-right">
+          <a href="register.html" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</a>
+        </div>
+  
+        <div class="am-topbar-right">
+          <a href="login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </header>
+
+<div class="am-g am-g-fixed blog-g-fixed">
+  <div class="am-u-md-8">
+    <section class="am-panel am-panel-default am-panel-primary packs">
+      <div class="am-panel-hd">模拟开包</div>
+      <div class="am-panel-bd" style="text-align: center">
+        <a class="pack" id="pack1" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
+        <a class="pack" id="pack2" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
+        <a class="pack" id="pack3" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
+        <a class="pack" id="pack4" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
+        <a class="pack" id="pack5" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
+      </div>
+    </section>
+    <!-- <section class="am-panel am-panel-default am-panel-secondary" >
+        <div class="am-panel-hd"># 1</div>
+        <div class="am-panel-bd" style="text-align: center">
+            <img class="pack-jd" src="assets/img/jd-back.png">
+            <img class="pack-jd" src="assets/img/jd-back.png">
+            <img class="pack-jd" src="assets/img/jd-back.png">
+            <img class="pack-jd" src="assets/img/jd-back.png">
+            <img class="pack-jd" src="assets/img/jd-back.png">
+            
+        </div>
+      </section> -->
+  </div>
+
+  <div class="am-u-md-4 blog-sidebar">
+    <div class="am-panel-group">
+      <section class="am-panel am-panel-default am-panel-success">
+        <div class="am-panel-hd">统计面板</div>
+        <div class="am-panel-bd">
+          <table class="am-table am-table-bordered am-table-radius am-table-striped total">
+            <thead>
+              <th></th>
+              <th>级别</th>
+              <th>稀有度</th>
+              <th>数量</th>
+              <th>稀有度总计</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="assets/img/free.png"></td>
+                    <td>免费</td>
+                    <td>0</td>
+                    <td id="freeNum">0</td>
+                    <td id="freeAll">0</td>
+                  </tr>
+              <tr>
+                <td><img src="assets/img/common.png"></td>
+                <td>普通</td>
+                <td>1</td>
+                <td id="commonNum">0</td>
+                <td id="commonAll">0</td>
+              </tr>
+              <tr>
+                  <td><img src="assets/img/rare.png"></td>
+                  <td>稀有</td>
+                  <td>2</td>
+                  <td id="rareNum">0</td>
+                  <td id="rareAll">0</td>
+                </tr>
+                <tr>
+                    <td><img src="assets/img/epic.png"></td>
+                    <td>史诗</td>
+                    <td>3</td>
+                    <td id="epicNum">0</td>
+                    <td id="epicAll">0</td>
+                  </tr>
+                  <tr>
+                      <td><img src="assets/img/legend.png"></td>
+                      <td>传说</td>
+                      <td>4</td>
+                      <td id="legendNum">0</td>
+                      <td id="legendAll">0</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>总计</td>
+                        <td></td>
+                        <td id="Num">0</td>
+                        <td id="All">0</td>
+                      </tr>
+            </tbody>
+        </table>
+        </div>
+      </section>
+      
+      <section class="am-panel am-panel-default am-panel-danger">
+        <div class="am-panel-hd">关于模拟开包</div>
+        <div class="am-panel-bd">
+          <p>每次模拟开包，玩家有5个卡包，各种类型的卡会按一定概率开出（详细概率参考下面信息）。</p>
+          <a class="am-btn am-btn-success am-btn-sm" href="home.html">了解更多 →</a>
+        </div>
+      </section>
+      <section class="am-panel am-panel-default am-panel-warning ">
+          <div class="am-panel-hd">开包概率</div>
+          <ul class="am-list blog-list">
+            <li><a>免费：3.24%</a></li>
+            <li><a>普通（白卡）：70%</a></li>
+            <li><a>稀有（蓝卡）：21.4%</a></li>
+            <li><a>史诗（紫卡）：4.28%</a></li>
+            <li><a>传说（橙卡）：1.08%</a></li>
+          </ul>
+        </section>
+    </div>
+  </div>
+
+</div>
+
+<footer class="blog-footer">
+  <p>神抽GO！<br/>
+    <small>© Copyright XXX. by 2.</small>
+  </p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+
+</body>
+</html>
