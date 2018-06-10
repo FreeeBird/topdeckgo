@@ -1,180 +1,277 @@
-<!doctype html>
-<html class="no-js">
-<head>
-  <meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>神抽GO！关于炉石传说的卡牌模拟器</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
   <meta name="viewport"
         content="width=device-width, initial-scale=1">
-  <title>Amaze UI Examples</title>
-
-  <!-- Set render engine for 360 browser -->
+  <meta name="format-detection" content="telephone=no">
   <meta name="renderer" content="webkit">
-
-  <!-- No Baidu Siteapp-->
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <style>
+    .get {
+      background: #1E5B94;
+      color: #fff;
+      text-align: center;
+      padding: 100px 0;
+    }
 
-  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    .get-title {
+      font-size: 200%;
+      border: 2px solid #fff;
+      padding: 20px;
+      display: inline-block;
+    }
 
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+    .get-btn {
+      background: #fff;
+    }
 
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    .detail {
+      background: #fff;
+    }
 
-  <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
-  <meta name="msapplication-TileColor" content="#0e90d2">
+    .detail-h2 {
+      text-align: center;
+      font-size: 150%;
+      margin: 40px 0;
+    }
 
-  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-  <!--
-  <link rel="canonical" href="http://www.example.com/">
-  -->
+    .detail-h3 {
+      color: #1f8dd6;
+    }
 
-  <link rel="stylesheet" href="assets/css/amazeui.min.css">
-  <link rel="stylesheet" href="assets/css/app.css">
+    .detail-p {
+      color: #7f8c8d;
+    }
+
+    .detail-mb {
+      margin-bottom: 30px;
+    }
+
+    .hope {
+      background: #0bb59b;
+      padding: 50px 0;
+    }
+
+    .hope-img {
+      text-align: center;
+    }
+
+    .hope-hr {
+      border-color: #149C88;
+    }
+
+    .hope-title {
+      font-size: 140%;
+    }
+
+    .about {
+      background: #fff;
+      padding: 40px 0;
+      color: #7f8c8d;
+    }
+
+    .about-color {
+      color: #34495e;
+    }
+
+    .about-title {
+      font-size: 180%;
+      padding: 30px 0 50px 0;
+      text-align: center;
+    }
+
+    .footer p {
+      color: #7f8c8d;
+      margin: 0;
+      padding: 15px 0;
+      text-align: center;
+      background: #2d3e50;
+    }
+    #notLogin a,#logined a{
+      color: #fff;
+    }
+
+  </style>
 </head>
 <body>
-<!--[if lte IE 9]>
-<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
-  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
-  以获得更好的体验！</p>
-<![endif]-->
+<header class="am-topbar am-topbar-fixed-top">
+  <div class="am-container">
+    <h1 class="am-topbar-brand">
+      <a href="#">神抽GO！</a>
+    </h1>
 
-<!-- 页面内容 开发时删除 -->
-<div class="am-g am-g-fixed am-margin-top">
-  <div class="am-u-sm-12">
-    <h1>你好世界！小可 Amaze UI 模板。</h1>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+        class="am-icon-bars"></span></button>
 
-    <p>这是一个基础的页面，引入 Amaze UI 的 css 、js
-      文件。如果你已经熟读文档，使用时删除内容开始开发即可。建议使用前先阅读文档，以提高开发效率。</p>
+    <div class="am-collapse am-topbar-collapse" id="collapse-head">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li class="am-active"><a>首页</a></li>
+        <li><a href="play.html">模拟开卡</a></li>
+        <li><a href="record.html">开卡记录</a></li>
+        <li><a href="#">卡牌数据</a></li>
+      </ul>
+      <div id="logined">
+        <div class="am-topbar-right">
+          <a onclick="logout()" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注销</a>
+        </div>
+  
+        <div class="am-topbar-right">
+          <a class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span><span class="username"></span></a>
+        </div>
+      </div>
+      <div id="notLogin">
+      <div class="am-topbar-right">
+        <a href="register.html" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</a>
+      </div>
+
+      <div class="am-topbar-right">
+        <a href="login.html" class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</a>
+      </div>
+    </div>
+    </div>
   </div>
-</div>
-<div class="am-g am-g-fixed am-margin-top">
-  <p class="am-u-sm-12">下载包里面有 4 个常见布局示例，供开发者参考。</p>
+</header>
 
-  <div class="am-u-sm-12">
-    <div class="am-g">
-      <div class="am-u-sm-12 am-u-md-3">
-        <a href="landing.html"><img class="am-img-thumbnail"
-                                    src="assets/i/examples/landingPage.png"
-                                    alt="展示页面"/></a>
-      </div>
-      <div class="am-u-sm-12 am-u-md-9">
-        <h3>展示页面</h3>
+<div class="get">
+  <div class="am-g">
+    <div class="am-u-lg-12 main">
+      <h1 class="get-title">神抽GO！</h1>
 
-        <p>
-          CSS 部分：<a class="am-badge am-badge-success" href="/css/grid">网格</a> <a
-          class="am-badge am-badge-success" href="/css/icon">图标</a> <a
-          class="am-badge am-badge-success" href="/css/button">按钮</a> <a
-          class="am-badge am-badge-success" href="/css/form">表单</a> <a
-          class="am-badge am-badge-success" href="/css/article">文章页</a> <a
-          class="am-badge am-badge-success" href="/css/topbar">导航条</a> <a
-          class="am-badge am-badge-success" href="/css/utility">辅助类</a><br/>
-          JS 插件部分：<a class="am-badge am-badge-primary"
-                     href="/javascript/dropdown">下拉组件</a> <a
-          class="am-badge am-badge-primary"
-          href="/javascript/scrollspy">滚动侦测</a>
-        </p>
-      </div>
+      <p>
+        关于炉石传说的卡牌信息管理及模拟开卡系统
+      </p>
+
+      <p>
+        <a class="am-btn am-btn-sm get-btn" href="play.html">神抽上线√</a>
+      </p>
     </div>
-    <div class="am-g am-margin-top">
-      <div class="am-u-sm-12 am-u-md-3">
-        <a href="login.html"><img class="am-img-thumbnail"
-                                  src="assets/i/examples/loginPage.png"
-                                  alt="登录页面"/></a>
-      </div>
-      <div class="am-u-sm-12 am-u-md-9">
-        <h3>登录页面</h3>
-
-        <p>
-          CSS 部分：<a class="am-badge am-badge-success" href="/css/grid">网格</a> <a
-          class="am-badge am-badge-success" href="/css/icon">图标</a> <a
-          class="am-badge am-badge-success" href="/css/button">按钮</a> <a
-          class="am-badge am-badge-success" href="/css/button-group">按钮组</a> <a
-          class="am-badge am-badge-success" href="/css/form">表单</a>
-        </p>
-      </div>
-    </div>
-    <div class="am-g am-margin-top">
-      <div class="am-u-sm-12 am-u-md-3">
-        <a href="blog.html"><img class="am-img-thumbnail"
-                                 src="assets/i/examples/blogPage.png"
-                                 alt="博客页面"/></a>
-      </div>
-      <div class="am-u-sm-12 am-u-md-9">
-        <h3>博客页面</h3>
-
-        <p>
-          CSS 部分：<a class="am-badge am-badge-success" href="/css/grid">网格</a> <a
-          class="am-badge am-badge-success" href="/css/block-grid">等宽布局</a> <a
-          class="am-badge am-badge-success" href="/css/icon">图标</a> <a
-          class="am-badge am-badge-success" href="/css/button">按钮</a> <a
-          class="am-badge am-badge-success" href="/css/panel">面板</a> <a
-          class="am-badge am-badge-success" href="/css/list">列表</a> <a
-          class="am-badge am-badge-success" href="/css/pagination">分页</a><br/>
-          JS 插件部分：<a class="am-badge am-badge-primary"
-                     href="/css/dropdown">下拉组件</a>
-        </p>
-      </div>
-    </div>
-    <div class="am-g am-margin-top">
-      <div class="am-u-sm-12 am-u-md-3">
-        <a href="sidebar.html"><img class="am-img-thumbnail"
-                                    src="assets/i/examples/sidebarPage.png"
-                                    alt="博客侧栏页面"/></a>
-      </div>
-      <div class="am-u-sm-12 am-u-md-9">
-        <h3>博客侧栏页面</h3>
-
-        <p>
-          CSS 部分：<a class="am-badge am-badge-success" href="/css/grid">网格</a> <a
-          class="am-badge am-badge-success" href="/css/article">文章页</a> <a
-          class="am-badge am-badge-success" href="/css/comment">评论列表</a> <a
-          class="am-badge am-badge-success" href="/css/button">按钮</a> <a
-          class="am-badge am-badge-success" href="/css/icon">图标</a> <a
-          class="am-badge am-badge-success" href="/css/list">列表</a> <a
-          class="am-badge am-badge-success" href="/css/utility">辅助类</a><br/>
-          JS 插件部分：<a class="am-badge am-badge-primary"
-                     href="/javascript/offcanvas">侧边栏组件</a>
-        </p>
-      </div>
-    </div>
-    <hr/>
-    <h2>Web 组件示例</h2>
-    <ul>
-      <li><a href="widget.basic.html">widget.basic.html</a> 使用了 <a
-        href="http://amazeui.org/widgets">Web 组件</a> 的 HTML 结构和样式，但没用使用模板在前端渲染数据，供通过后端渲染数据的用户参考。</li>
-      <li><a href="widget.html">widget.html</a> 是 Web 组件的展示，更多细节查看：<a
-        href="http://amazeui.org/widgets">Web 组件</a></li>
-    </ul>
-    <h3>开始创建你的网页吧。</h3>
   </div>
 </div>
 
-<footer class="am-margin-top">
-  <hr/>
-  <p class="am-text-center">
-    <small>by The AmazeUI Team.</small>
-  </p>
+<div class="detail">
+  <div class="am-g am-container">
+    <div class="am-u-lg-12">
+      <h2 class="detail-h2">One Web 、Any Device，期待和你一起去实现!</h2>
+
+      <div class="am-g">
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+
+          <h3 class="detail-h3">
+            <i class="am-icon-mobile am-icon-sm"></i>
+            <span> 抽奖机制</span>
+          </h3>
+
+          <p class="detail-p">
+            当今社会游戏产业比较发达，多数游戏都有着抽奖机制，玩家可以通过抽奖来获得自己想要的游戏物品，并能从中获得乐趣。
+          </p>
+        </div>
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+          <h3 class="detail-h3">
+            <i class="am-icon-cogs am-icon-sm"></i>
+            <span> 无法满足</span>
+          </h3>
+
+          <p class="detail-p">
+            由于获奖几率的限制，大多数玩家并不能够获得自己想要的物品。让玩家体验获得高品质物品的乐趣，为此而生。
+          </p>
+        </div>
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+          <h3 class="detail-h3">
+            <i class="am-icon-check-square-o am-icon-sm"></i>
+            <span> 体验“神抽”</span>
+          </h3>
+
+          <p class="detail-p">
+            鉴于目前多数玩家在游戏中开包一直获得不到自己想要的卡牌或者高品质的卡牌的前提下，让玩家体验“神抽”的快感。
+          </p>
+        </div>
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+          <h3 class="detail-h3">
+            <i class="am-icon-send-o am-icon-sm"></i>
+             轻量全面
+          </h3>
+
+          <p class="detail-p">
+            致力于让玩家体验到平时在真实游戏中体验不到的快感。以及提供详细的卡牌查询服务，让玩家能对游戏卡牌有更深的理解。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hope">
+  <div class="am-g am-container">
+    <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 hope-img">
+      <img  src="assets/img/back3.jpg" alt="" data-am-scrollspy="{animation:'slide-left', repeat: false}">
+      <hr class="am-article-divider am-show-sm-only hope-hr">
+    </div>
+    <div class="am-u-lg-8 am-u-md-6 am-u-sm-12">
+      <h2 class="hope-title">我们一起发掘有趣的故事</h2>
+
+      <p>
+        在知识爆炸的年代，我们不愿成为知识的过客，拥抱游戏文化，发挥玩家们的力量，参与到故事客栈获得自我升华。
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <div class="am-g am-container">
+    <div class="am-u-lg-12">
+      <h2 class="about-title about-color">TopDeck 崇尚开放、自由，非常欢迎大家的参与</h2>
+
+      <div class="am-g">
+        <div class="am-u-lg-6 am-u-md-4 am-u-sm-12">
+          <form class="am-form">
+            <label for="name" class="about-color">你的姓名</label>
+            <input id="name" type="text">
+            <br/>
+            <label for="email" class="about-color">你的邮箱</label>
+            <input id="email" type="email">
+            <br/>
+            <label for="message" class="about-color">你的留言</label>
+            <textarea id="message"></textarea>
+            <br/>
+            <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-check"></i> 提 交</button>
+          </form>
+          <hr class="am-article-divider am-show-sm-only">
+        </div>
+
+        <div class="am-u-lg-6 am-u-md-8 am-u-sm-12">
+          <h4 class="about-color">关于我们</h4>
+
+          <p>2017-2018 春季学期，软件工程导论 2组</p>
+          <h4 class="about-color">团队介绍</h4>
+
+          <p>2017-2018 春季学期，软件工程导论 2组</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2018 <a href="http://www.yunshipei.com" target="_blank">topdeck, Inc.</a> Licensed under <a
+      href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. by .</p>
 </footer>
-<!-- 以上页面内容 开发时删除 -->
 
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="assets/js/app.js"></script>
 <![endif]-->
 
-<!--[if (gte IE 9)|!(IE)]><!-->
+  <script src="assets/js/jquery.js"></script>
 <script src="assets/js/jquery.min.js"></script>
-<!--<![endif]-->
+<script src="assets/js/app.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
-
 </body>
 </html>

@@ -47,7 +47,7 @@ function login(){
             function(data,status){
               if(data == 0){
                   localStorage.setItem("userName",username);
-                  location.href = "home.html";
+                  location.href = "index.html";
               }
               else if (data == -1) alert("用户不存在！");
               else if (data == -2) alert("用户与密码不对应！");
