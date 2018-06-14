@@ -5,4 +5,6 @@
 ``
 
 #如何运行
-
+1.前端页面放在src\main\resources\static目录下。
+2.数据库文件保存在根目录下，文件名为test.sql
+3.直接用spring boot内置tomcat服务器启动即可，访问http://localhost:8080/topdecks/。
