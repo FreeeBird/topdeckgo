@@ -18,16 +18,32 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
+    /**
+     *
+     * @param cardName
+     * @return
+     */
     @RequestMapping(value = "/getCardByCardName")
     public Card getCardByCardName(String cardName){
         return cardService.getCardByCardName(cardName);
     }
 
+    /**
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @PostMapping(value = "/getAllCard")
     public List<Card> getAllCard(int pageNum,int pageSize){
         return cardService.getAllCard(pageNum,pageSize);
     }
 
+    /**
+     *
+     * @param cardNum
+     * @return
+     */
     @PostMapping(value = "/getRandomCard")
     public List<Card> getRandomCard(int cardNum){
         return cardService.getRandomCard(cardNum);

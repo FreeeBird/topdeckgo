@@ -14,6 +14,7 @@
   <script src="assets/js/jquery.js"></script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/echarts.js"></script>
   <script src="assets/js/record.js"></script>
   <style>
     @media only screen and (min-width: 1200px) {
@@ -122,8 +123,8 @@
       <div class="am-collapse am-topbar-collapse" id="collapse-head">
         <ul class="am-nav am-nav-pills am-topbar-nav">
           <li><a href="index.html">首页</a></li>
-          <li class="am-active"><a>模拟开卡</a></li>
-          <li><a href="#">开卡记录</a></li>
+          <li ><a href="play.html">模拟开卡</a></li>
+          <li class="am-active"><a href="record.html">开卡记录</a></li>
           <li><a href="#">卡牌数据</a></li>
         </ul>
         <div id="logined">
@@ -151,7 +152,7 @@
 <div class="am-g am-g-fixed blog-g-fixed">
   <div class="am-u-md-8">
     <section class="am-panel am-panel-default am-panel-primary packs">
-      <div class="am-panel-hd">模拟开包</div>
+      <div class="am-panel-hd">最近开包稀有度值</div>
       <div class="am-panel-bd" style="text-align: center">
         <a class="pack" id="pack1" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
         <a class="pack" id="pack2" onclick="openPack(this.id)"><img class="pack-jd" src="assets/img/pack-jd.png"></a>
