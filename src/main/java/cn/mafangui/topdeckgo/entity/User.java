@@ -1,6 +1,9 @@
 package cn.mafangui.topdeckgo.entity;
 
-public class User {
+import java.io.Serializable;
+import java.util.UUID;
+
+public class User  implements Serializable {
 
     private int userId;
 
@@ -9,6 +12,9 @@ public class User {
     private String password;
 
     private String phone;
+
+    public User() {
+    }
 
     public int getUserId() {
         return userId;

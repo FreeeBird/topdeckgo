@@ -30,4 +30,9 @@ public class CardServiceImpl implements CardService {
     public List<Card> getRandomCard(int cardNum) {
         return cardDao.selectCardByRandom(cardNum);
     }
+
+    @Override
+    public Card getDayCard() {
+        return cardDao.selectCardByRandom(1).get(0);
+    }
 }

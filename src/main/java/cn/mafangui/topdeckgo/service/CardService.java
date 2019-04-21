@@ -13,4 +13,6 @@ public interface CardService {
     Card getCardByCardName(String cardName);
 
     List<Card> getRandomCard(int cardNum);
+
+    Card getDayCard();
 }

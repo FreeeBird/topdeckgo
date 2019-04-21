@@ -7,14 +7,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.Cacheable;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @RequestMapping("/getUser")
+    @Cacheable(value="user-key")
+    public User getUser() {
+        User user = new User();
+        user.setUserId(new Random().nextInt());
+        user.setUserName("name");
+        user.setPhone("324324");
+        user.setPassword("dsa");
+        System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
+        return user;
+    }
 
     @RequestMapping(value = "/getAllUser")
     public List<User> getAllUser(){

@@ -1,6 +1,12 @@
 package cn.mafangui.topdeckgo.entity;
 
-public class Card {
+
+import io.swagger.annotations.ApiModel;
+
+import java.io.Serializable;
+
+@ApiModel(value = "卡牌对象",description = "卡牌实体类")
+public class Card implements Serializable {
     // id
     private int cardId;
     // 卡片名
