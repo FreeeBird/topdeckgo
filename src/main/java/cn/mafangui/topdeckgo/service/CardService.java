@@ -10,9 +10,17 @@ public interface CardService {
 
     List<Card> getAllCard(int pageNum,int pageSize);
 
-    Card getCardByCardName(String cardName);
+    Card getByCardName(String cardName);
+
+    Card getByCardEngName(String engName);
+
+    Card getById(Integer id);
 
     List<Card> getRandomCard(int cardNum);
 
+    List<Card> getRandomCard(int cardNum,String cardRarity);
+
     Card getDayCard();
+
+    List<Card> getASetCard();
 }

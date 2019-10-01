@@ -19,8 +19,8 @@ for(var i = 1;i<=5; i++){
 
 function openPack(packClass){
     var packId = packClass.substr(this.length-1,1);
-    var pc = "#" + packClass;
-    if(opened[packId]==1){
+    var pc = "PACK " + packClass;
+    if(opened[packId]===1){
         alert("这个卡包已经打开了！");
         return;
     }
@@ -28,9 +28,9 @@ function openPack(packClass){
     url = host + "/card/getRandomCard";
     $.post(url,{cardNum:5},
       function(data,status){
-        if(status != "success") alert("error");
-        pack[packId]=data;
-
+        console.log(data.toString());
+        if(status !== "success") alert("error");
+        pack[packId]=data[data];
       }
     );
     $(pc).children("img").attr("src","assets/img/pack-jd-opened.png");

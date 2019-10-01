@@ -1,6 +1,5 @@
-package cn.mafangui.topdeckgo.service.impl;
+package cn.mafangui.topdeckgo.tool;
 
-import cn.mafangui.topdeckgo.service.MailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +13,17 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
-public class MailServiceImpl implements MailService {
+public class MailUtil {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger logger = LoggerFactory.getLogger(MailUtil.class);
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private static JavaMailSender javaMailSender;
 
     @Value("${spring.mail.username}")
-    private String from;
+    private static String from;
 
-    @Override
-    public void sendSimpleMail(String to, String subject, String content) {
+    public static void sendSimpleMail(String to, String subject, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);
@@ -40,8 +38,7 @@ public class MailServiceImpl implements MailService {
 
     }
 
-    @Override
-    public void sendHtmlMail(String to, String subject, String content) {
+    public static void sendHtmlMail(String to, String subject, String content) {
         MimeMessage message = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message,true);

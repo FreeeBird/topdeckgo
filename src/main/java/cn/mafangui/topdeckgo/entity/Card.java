@@ -3,12 +3,17 @@ package cn.mafangui.topdeckgo.entity;
 
 import io.swagger.annotations.ApiModel;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @ApiModel(value = "卡牌对象",description = "卡牌实体类")
-public class Card implements Serializable {
+@Entity
+public class Card {
     // id
-    private int cardId;
+    @Id
+    @GeneratedValue
+    private Integer cardId;
     // 卡片名
     private String cardName;
     // 英文名
@@ -17,18 +22,20 @@ public class Card implements Serializable {
     private String cardClass;
     // 稀有度
     private String cardRarity;
+    //
+    private String cardType;
     // 法力
-    private int cardSpellPower;
+    private Integer cardSpellPower;
     // 生命
-    private int cardHealth;
+    private Integer cardHealth;
     // 攻击
-    private int cardAtk;
+    private Integer cardAtk;
     //描述
     private String cardDescription;
     //图片地址
     private String cardImgUrl;
     //稀有度num
-    private int cardRarityNum;
+    private Integer cardRarityNum;
 
     @Override
     public String toString() {
@@ -47,11 +54,11 @@ public class Card implements Serializable {
                 '}';
     }
 
-    public int getCardRarityNum() {
+    public Integer getCardRarityNum() {
         return cardRarityNum;
     }
 
-    public void setCardRarityNum(int cardRarityNum) {
+    public void setCardRarityNum(Integer cardRarityNum) {
         this.cardRarityNum = cardRarityNum;
     }
 
@@ -71,11 +78,11 @@ public class Card implements Serializable {
         this.cardImgUrl = cardImgUrl;
     }
 
-    public int getCardId() {
+    public Integer getCardId() {
         return cardId;
     }
 
-    public void setCardId(int cardId) {
+    public void setCardId(Integer cardId) {
         this.cardId = cardId;
     }
 
@@ -111,27 +118,27 @@ public class Card implements Serializable {
         this.cardRarity = cardRarity;
     }
 
-    public int getCardSpellPower() {
+    public Integer getCardSpellPower() {
         return cardSpellPower;
     }
 
-    public void setCardSpellPower(int cardSpellPower) {
+    public void setCardSpellPower(Integer cardSpellPower) {
         this.cardSpellPower = cardSpellPower;
     }
 
-    public int getCardHealth() {
+    public Integer getCardHealth() {
         return cardHealth;
     }
 
-    public void setCardHealth(int cardHealth) {
+    public void setCardHealth(Integer cardHealth) {
         this.cardHealth = cardHealth;
     }
 
-    public int getCardAtk() {
+    public Integer getCardAtk() {
         return cardAtk;
     }
 
-    public void setCardAtk(int cardAtk) {
+    public void setCardAtk(Integer cardAtk) {
         this.cardAtk = cardAtk;
     }
 
