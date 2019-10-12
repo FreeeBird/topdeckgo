@@ -1,9 +1,17 @@
 package cn.mafangui.topdeckgo.response;
 
+import java.io.Serializable;
+
 /**
  * 统一返回格式
+ * Example:
+ * {
+ * code:100,
+ * message: "NOT FOUND",
+ * data:{}
+ * }
  */
-public class AjaxResult<T> {
+public class AjaxResult<T> implements Serializable {
 
     // 状态码
     private Integer code;

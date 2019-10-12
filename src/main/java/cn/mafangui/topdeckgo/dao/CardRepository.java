@@ -13,13 +13,13 @@ public interface CardRepository extends JpaRepository< Card,Integer> {
     Card getByCardEngName(String engName);
     List<Card> getAllByCardClass(String cardClass);
     List<Card> getAllByCardType(String cardType);
-//    @Query(value = "select * from card where card_id >= " +
-//            "(select floor(RAND()*(select MAX(card_id) from card)))" +
-//            " order by card_id limit 1",nativeQuery = true)
-//    Card getRandomOne();
+
     @Query(value = "SELECT * FROM card ORDER BY RAND() LIMIT ?1 ",nativeQuery = true)
     List<Card> getRandom(int num);
+
     @Query(value = "SELECT * FROM card where card_rarity_num=?2 ORDER BY RAND() LIMIT ?1 ",nativeQuery = true)
     List<Card> getRandomCardByRarity(Integer num,Integer cardRarityNum);
+
+
 
 }

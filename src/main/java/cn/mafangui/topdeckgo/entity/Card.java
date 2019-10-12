@@ -6,10 +6,11 @@ import io.swagger.annotations.ApiModel;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @ApiModel(value = "卡牌对象",description = "卡牌实体类")
 @Entity
-public class Card {
+public class Card implements Serializable {
     // id
     @Id
     @GeneratedValue
@@ -22,7 +23,7 @@ public class Card {
     private String cardClass;
     // 稀有度
     private String cardRarity;
-    //
+    // 类型
     private String cardType;
     // 法力
     private Integer cardSpellPower;
@@ -52,6 +53,14 @@ public class Card {
                 ", cardImgUrl='" + cardImgUrl + '\'' +
                 ", cardRarityNum=" + cardRarityNum +
                 '}';
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
     public Integer getCardRarityNum() {

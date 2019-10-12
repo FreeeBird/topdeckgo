@@ -1,5 +1,8 @@
 package cn.mafangui.topdeckgo.entity;
 
+/**
+ * 卡牌稀有度枚举类
+ */
 public enum CardRarity {
 
     FREE(0,"免费"),

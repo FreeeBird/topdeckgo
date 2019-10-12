@@ -11,6 +11,9 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,15 +26,9 @@ import java.util.List;
 public class CardController {
 
     private static Logger logger = LoggerFactory.getLogger(CardController.class);
-
     @Autowired
     private CardService cardService;
 
-
-//    @Autowired
-//    private StringRedisTemplate stringRedisTemplate;
-//    @Autowired
-//    private RedisTemplate redisTemplate;
 
     /**
      * 根据ID号获取卡牌信息
@@ -53,9 +50,9 @@ public class CardController {
      * @param cardName
      * @return
      */
-    @ApiOperation(value = "根据卡牌名获取卡牌信息",httpMethod = "GET",response = Card.class)
+    @ApiOperation(value = "根据卡牌名获取卡牌信息",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/name/{cardName}")
-    public AjaxResult getCardByCardName(@PathVariable String cardName) throws CardException {
+    public AjaxResult getCardByCardName(@PathVariable String cardName) {
         Card card = cardService.getByCardName(cardName);
         if (card == null){
             return ResponseUtil.failed(MsgType.CARD_IS_NOT_FOUND);
@@ -63,9 +60,9 @@ public class CardController {
         return ResponseUtil.success(card);
     }
 
-    @ApiOperation(value = "根据卡牌英文名获取卡牌信息",httpMethod = "GET",response = Card.class)
+    @ApiOperation(value = "根据卡牌英文名获取卡牌信息",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/eng_name/{cardEngName}")
-    public AjaxResult getCardByCardEngName(@PathVariable String cardEngName) throws CardException {
+    public AjaxResult getCardByCardEngName(@PathVariable String cardEngName) {
         Card card = cardService.getByCardEngName(cardEngName);
         if (card == null){
             return ResponseUtil.failed(MsgType.CARD_IS_NOT_FOUND);
@@ -73,15 +70,26 @@ public class CardController {
         return ResponseUtil.success(card);
     }
 
+    @ApiOperation(value = "获取分页数",response = AjaxResult.class)
+    @RequestMapping(value = "/page")
+    public AjaxResult getCount(Integer pageSize){
+        if (null == pageSize||pageSize<=0){
+            logger.error(MsgType.PARAM_IS_INVALID.getMessage());
+            return ResponseUtil.failed(MsgType.PARAM_IS_INVALID);
+        }
+        int pageNum = (int) Math.ceil(cardService.getCount()*1.0 / pageSize);
+        return ResponseUtil.success(pageNum);
+    }
+
     /**
-     *
-     * @param pageNum
-     * @param pageSize
+     * 获取全部卡牌
      * @return
      */
-    @RequestMapping(value = "/getAllCard")
-    public List<Card> getAllCard(int pageNum,int pageSize){
-        return cardService.getAllCard(pageNum,pageSize);
+    @ApiOperation(value = "获取全部卡牌",response = AjaxResult.class)
+    @RequestMapping(value = "/all")
+    public AjaxResult getAllCard() {
+        List<Card> cards = cardService.getAllCard();
+        return ResponseUtil.success(cards);
     }
 
     /**
@@ -93,7 +101,15 @@ public class CardController {
     @ApiOperation(value = "分页获取卡牌信息",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "")
     public AjaxResult getAllCards(Integer pageNum, Integer pageSize) {
-        return ResponseUtil.success(cardService.getAllCard(pageNum,pageSize));
+        Pageable pageable;
+        try{
+            pageable = PageRequest.of(pageNum,pageSize);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            return ResponseUtil.failed(e.getMessage());
+        }
+        List<Card> cards = cardService.getAllCard(pageable).getContent();
+        return ResponseUtil.success(cards);
     }
 
     /**
@@ -101,6 +117,7 @@ public class CardController {
      * @param cardNum
      * @return
      */
+    @ApiOperation(value = "随机获取卡片",response = AjaxResult.class)
     @RequestMapping(value = "/getRandomCard")
     public AjaxResult getRandomCard(Integer cardNum){
         if (cardNum<=0||cardNum>1000){
@@ -109,22 +126,20 @@ public class CardController {
         return ResponseUtil.success(cardService.getRandomCard(cardNum));
     }
 
-//    @Cacheable(value = "dayCard")
-
     /**
      * 获取每日一卡
      * @return
      */
+    @ApiOperation(value = "获取每日一卡",response = AjaxResult.class)
     @RequestMapping(value = "/getDayCard")
-    public Card getDayCard(){
-        Card card = cardService.getDayCard();
-        return card;
+    public AjaxResult getDayCard(){
+        return ResponseUtil.success(cardService.getDayCard());
     }
-
     /**
-     *  抽卡包
+     *  抽卡包(5张卡牌)
      * @return
      */
+    @ApiOperation(value = "抽卡包",response = AjaxResult.class)
     @RequestMapping(value = "/draw")
     public AjaxResult drawASetOfCard(){
         return ResponseUtil.success(cardService.getASetCard());

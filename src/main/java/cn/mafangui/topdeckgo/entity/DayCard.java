@@ -5,11 +5,12 @@ import io.swagger.annotations.ApiModel;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 @ApiModel(value = "每日卡牌",description = "每日卡牌信息")
 @Entity
-public class DayCard {
+public class DayCard implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;

@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MyDateTimeFormat {
+public class MyDateTimeUtil {
 //    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
     Calendar calendar = Calendar.getInstance();
     String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
 
@@ -78,7 +78,7 @@ public class MyDateTimeFormat {
      * @param date
      * @return
      */
-    public String formatDay(Date date){
+    public static String formatDay(Date date){
         simpleDateFormat.applyPattern("yyyy-MM-dd");
         return simpleDateFormat.format(date);
     }
@@ -99,5 +99,12 @@ public class MyDateTimeFormat {
     public String formatSecond(Date date){
         simpleDateFormat.applyPattern("yyyy-MM-dd HH:mm:ss");
         return simpleDateFormat.format(date);
+    }
+
+
+    public static boolean isToday(Date date){
+        String today = formatDay(new Date());
+        String d = formatDay(date);
+        return today.equals(d);
     }
 }

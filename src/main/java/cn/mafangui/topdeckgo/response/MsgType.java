@@ -1,8 +1,12 @@
 package cn.mafangui.topdeckgo.response;
 
+
+/**
+ * 消息类型描述
+ */
 public enum MsgType {
     SUCCESS(1000,"success"),
-    FAILED(1001,"failed"),
+    FAILED(1001,"Failure"),
 
     PARAM_IS_INVALID(1100,"参数非法"),
     CARD_IS_NOT_FOUND(2001,"找不到相应卡牌"),
