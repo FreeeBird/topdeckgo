@@ -1,0 +1,19 @@
+.back_primary{
+    background-color: #2196f3;
+}
+
+
+.pack-jd,.pack-jd-opened{
+    width: 100%;
+    border-radius: 8%;
+    max-height: 300px;
+    max-width: 280px;
+  }
+.pack-jd:hover{
+    /*position: absolute;*/
+    /*z-index: 100;*/
+    /*width: 105%;*/
+    box-shadow: -1px -1px 20px #fff;
+    transform: translate3d(0,-2px,0);
+    cursor: pointer;
+}

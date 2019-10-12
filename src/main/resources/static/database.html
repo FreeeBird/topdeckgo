@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PlayGround | Topdeck GO</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <script src="assets/js/vue.js"></script>
+  <link rel="stylesheet" href="assets/css/muse-ui.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/muse-ui-toast.css">
+  <script src="assets/js/muse-ui.js"></script>
+  <script src="assets/js/app.js"></script>
+
+  <script src="assets/js/muse-ui-toast.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css">
+
+</head>
+
+<body>
+  <div id="database" class="database">
+    <iframe src="appbar.html" frameborder="0" width="100%" height="70"></iframe>
+    <mu-container fluid style="padding: 4px;margin-top: 48px;width: 80%;">
+      <mu-row gutter>
+        <!-- 左侧 -->
+        <mu-col span=12>
+          <mu-chip color="primary" style="margin-bottom: 8px">Database</mu-chip>
+          <mu-paper class="pg-paper" :z-depth="5"
+            style="padding: 24px 0!important;border-radius: 8px">
+            <mu-row gutter wrap="wrap" justify-content="center">
+              <mu-col span="2" sm="12" md="6" lg="3" xl="2" v-for="(card,index) in cardSets" v-bind:key="index">
+                <mu-paper class="pg-paper" style="padding: 8px">
+                  <img class="pack-jd" v-on:click="openCardDetailDialog(card.cardId)" :src="card.cardImgUrl">
+                </mu-paper>
+              </mu-col>
+            </mu-row>
+          </mu-paper>
+        </mu-col>
+      </mu-row>
+      <mu-row gutter style="margin: 8px">
+        <mu-col span="12">
+          <mu-pagination  raised circle :total="num" :current.sync="pageNum" :change="getData(this.pageNum)"></mu-pagination>
+        </mu-col>
+      </mu-row>
+      <mu-dialog width="540" min-width="450px" transition="scale" :open.sync="cardDetail">
+        <mu-card raised style="width: 100%;  margin: 0 auto;">
+          <mu-card-header :title="card.cardName" :sub-title="card.cardEngName">
+            <mu-avatar slot="avatar">
+              <img :src="getRarityImg(card.cardRarityNum)">
+
+            </mu-avatar>
+            <!--            <mu-badge :content="card.cardId" color="primary"></mu-badge>-->
+          </mu-card-header>
+          <mu-card-media>
+            <img class="pack-jd-opened" :src="card.cardImgUrl">
+          </mu-card-media>
+          <!--          <mu-card-title :title="card.cardRarity" :sub-title="card.cardClass"></mu-card-title>-->
+          <mu-card-text>
+            <h4>
+              稀有度：<mu-badge color="primary" :content="card.cardRarity"></mu-badge>
+              职业：<mu-badge color="primary" :content="card.cardClass"></mu-badge>
+              类型：<mu-badge color="primary" :content="card.cardType"></mu-badge>
+            </h4>
+            <h4>
+              生命值：<mu-badge color="secondary" :content="card.cardHealth+''"></mu-badge>
+              攻击力：<mu-badge color="secondary" :content="card.cardAtk+''"></mu-badge>
+              法力值：<mu-badge color="secondary" :content="card.cardSpellPower+''"></mu-badge>
+            </h4>
+            <h4>描述：</h4>
+            <h2>{{card.cardDescription}}</h2>
+          </mu-card-text>
+          <mu-card-actions>
+            <!--            <mu-button color="primary">cardHealth:</mu-button>-->
+            <!--            <mu-badge :content="'生命值：'+card.cardHealth" color="primary"></mu-badge>-->
+            <!--            <mu-badge :content="card.cardSpellPower" color="primary"></mu-badge>-->
+            <!--            <mu-badge :content="card.cardType" color="primary"></mu-badge>-->
+            <!--            <mu-badge :content="card.cardAtk" color="primary"></mu-badge>-->
+            <mu-button color="teal" v-on:click="closeCardDetailDialog">OK</mu-button>
+
+          </mu-card-actions>
+        </mu-card>
+      </mu-dialog>
+    </mu-container>
+  </div>
+
+  <script src="assets/js/axios.min.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#database',
+      data: {
+        cardDetail:false,
+        pageSize: 12,
+        pageNum: 1,
+        num:0,
+        cardSets:[],
+        card:{},
+      },
+      mounted:function(){
+
+      },
+      methods: {
+        getRarityImg:function(i){
+          var url = '';
+          switch (i) {
+            case 0:url='assets/img/free.png';break;
+            case 1:url='assets/img/common.png';break;
+            case 2:url='assets/img/rare.png';break;
+            case 3:url='assets/img/epic.png';break;
+            case 4:url='assets/img/legend.png';break;
+          }
+          return url;
+        },
+        closeCardDetailDialog:function(){
+          this.cardDetail = false;
+        },
+        openCardDetailDialog:function(id){
+          axios
+                  .get(host+'/card/'+id)
+                  .then((response) => {
+                    this.card = response.data.data;
+                  })
+                  .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                    this.$toast.error(error);
+                  });
+          this.cardDetail = true;
+        },
+        getPageNum:function(){
+          axios
+            .get(host+'/card/page', {
+              params: {
+                pageSize: this.pageSize
+              }
+            })
+            .then((response) => {
+              this.num = response.data.data;
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+              this.$toast.error(error);
+            });
+        },
+        getData: function (num) {
+          this.$delete(this.cardSets);
+          axios
+            .get(host+'/card', {
+              params: {
+                pageNum: (num-1),
+                pageSize: this.pageSize,
+
+              }
+            })
+            .then((response) => {
+              this.cardSets = response.data.data;
+            })
+            .catch(function (error) { // 请求失败处理
+              console.log(error);
+              this.$toast.error(error);
+            });
+            
+        },
+      },
+      created:function () {
+        this.getPageNum();
+        this.getData(this.pageNum);
+      }
+    })
+  </script>
+</body>
+
+</html>

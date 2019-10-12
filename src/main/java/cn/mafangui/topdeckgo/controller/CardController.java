@@ -1,7 +1,6 @@
 package cn.mafangui.topdeckgo.controller;
 
 import cn.mafangui.topdeckgo.entity.Card;
-import cn.mafangui.topdeckgo.exception.CardException;
 import cn.mafangui.topdeckgo.response.MsgType;
 import cn.mafangui.topdeckgo.service.CardService;
 import cn.mafangui.topdeckgo.response.AjaxResult;
@@ -70,7 +69,7 @@ public class CardController {
         return ResponseUtil.success(card);
     }
 
-    @ApiOperation(value = "获取分页数",response = AjaxResult.class)
+    @ApiOperation(value = "获取分页数",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/page")
     public AjaxResult getCount(Integer pageSize){
         if (null == pageSize||pageSize<=0){
@@ -85,7 +84,7 @@ public class CardController {
      * 获取全部卡牌
      * @return
      */
-    @ApiOperation(value = "获取全部卡牌",response = AjaxResult.class)
+    @ApiOperation(value = "获取全部卡牌",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/all")
     public AjaxResult getAllCard() {
         List<Card> cards = cardService.getAllCard();
@@ -117,7 +116,7 @@ public class CardController {
      * @param cardNum
      * @return
      */
-    @ApiOperation(value = "随机获取卡片",response = AjaxResult.class)
+    @ApiOperation(value = "随机获取卡片",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/getRandomCard")
     public AjaxResult getRandomCard(Integer cardNum){
         if (cardNum<=0||cardNum>1000){
@@ -130,7 +129,7 @@ public class CardController {
      * 获取每日一卡
      * @return
      */
-    @ApiOperation(value = "获取每日一卡",response = AjaxResult.class)
+    @ApiOperation(value = "获取每日一卡",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/getDayCard")
     public AjaxResult getDayCard(){
         return ResponseUtil.success(cardService.getDayCard());
@@ -139,7 +138,7 @@ public class CardController {
      *  抽卡包(5张卡牌)
      * @return
      */
-    @ApiOperation(value = "抽卡包",response = AjaxResult.class)
+    @ApiOperation(value = "抽卡包",httpMethod = "GET",response = AjaxResult.class)
     @RequestMapping(value = "/draw")
     public AjaxResult drawASetOfCard(){
         return ResponseUtil.success(cardService.getASetCard());

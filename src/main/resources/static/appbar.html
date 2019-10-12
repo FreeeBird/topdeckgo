@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="assets/js/vue.js"></script>
+  <link rel="stylesheet" href="assets/css/muse-ui.css">
+  <script src="assets/js/muse-ui.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css">
+</head>
+
+<body>
+    <div id="appbar" class="appbar">
+        <mu-appbar style="width: 100%;" color="primary">
+            <mu-button slot="left" flat v-on:click="jump('index.html')">
+              <mu-icon value="home" left></mu-icon>
+              Topdeck Go
+            </mu-button>
+
+            <mu-button slot="left"  flat v-on:click="jump('play.html')">Draw</mu-button>
+            &nbsp;&nbsp;
+            <mu-button slot="left" flat v-on:click="jump('database.html')">Database</mu-button>
+          </mu-appbar>
+      </div>
+      <script type="text/javascript">
+        var app = new Vue({
+          el: '#appbar',
+            data:{},
+            methods:{
+              jump:function (path) {
+                  window.top.location.href = path;
+              }
+            },
+        });
+      </script>
+</body>
+
+</html>
