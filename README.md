@@ -17,7 +17,7 @@
 - Mysql 5.7
 - redis 
 
-### 截图
+### Screenshots
 ![img](Screenshots/api.jpg "API一览")
 
 ![img](Screenshots/code.png "抽取代码")
@@ -32,7 +32,8 @@
 
 
 ## dev
-- 前端页面放在src\main\resources\static目录下。
+> 项目采用前后端分离，SpringBoot提供API
+1. 前端页面放在src\main\resources\static目录下。
     > vue + muse-ui
 2. 数据库文件保存在根目录下，文件名为topdeckgo.sql
     > mysql
