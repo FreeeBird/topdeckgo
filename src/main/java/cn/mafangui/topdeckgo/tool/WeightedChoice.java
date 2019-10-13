@@ -20,7 +20,6 @@ public class WeightedChoice {
     private static final int LEGEND = CardRarity.LEGEND.getCardRarityNum();
     private static final Double[] WEIGHTS = new Double[]{0.4,4.1,24.5,71.0};
     private static final Integer[] ID = new Integer[]{LEGEND,EPIC,RARE,COMMON};
-//    private static final Integer[] ID = new Integer[]{COMMON,RARE,EPIC,LEGEND};
 
     private static int randomChoice(){
         double sumOfWeight = 0;
