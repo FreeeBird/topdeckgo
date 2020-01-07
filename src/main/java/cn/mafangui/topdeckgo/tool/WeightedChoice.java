@@ -2,7 +2,10 @@ package cn.mafangui.topdeckgo.tool;
 
 import cn.mafangui.topdeckgo.entity.CardRarity;
 
+import java.security.SecureRandom;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 
 /**
  *  按概率抽取
@@ -26,8 +29,7 @@ public class WeightedChoice {
         for (Double weight : WEIGHTS) {
             sumOfWeight += weight;
         }
-        Random random = new Random();
-        double randNumber = random.nextDouble()*sumOfWeight;
+        double randNumber = ThreadLocalRandom.current().nextDouble()*sumOfWeight;
         for (int i = 0; i < WEIGHTS.length; i++) {
             if (randNumber<WEIGHTS[i]) return ID[i];
             randNumber -= WEIGHTS[i];

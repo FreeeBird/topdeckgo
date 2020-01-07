@@ -1,6 +1,7 @@
 # Topdeck Go
 > A program about hearthstone.
 
+> PS:图片数据库已挂
 
 ![badge](https://img.shields.io/badge/SpringBoot-2.0.1-brightgreen)
 ![badge](https://img.shields.io/badge/redis-2.0.1-orange)
@@ -14,8 +15,7 @@
 ## Environment
 - JAVA 1.8
 - Vue 2.x
-- Mysql 5.7
-- redis 
+- Mysql 5.7 
 
 ### Screenshots
 ![img](Screenshots/api.jpg "API一览")
