@@ -20,8 +20,6 @@
 ### Screenshots
 ![img](Screenshots/api.jpg "API一览")
 
-![img](Screenshots/code.png "抽取代码")
-
 ![img](Screenshots/index.png "首页")
 
 ![img](Screenshots/draw.png "抽卡")
